@@ -17,6 +17,15 @@ QUnit.test("total area test", function (assert) {
 });
 
 QUnit.test("puzzle input test", function (assert) {
-    assert.equal(puzzle_run(), 1598415, "puzzle input area succeeds");
+    assert.equal(part_one(), 1598415, "puzzle input area succeeds");
 
+});
+
+QUnit.test("Day 2 part 2: total material required test", function (assert) {
+    assert.equal(total_material(2, 3, 4), 34, "total material required succeeds");
+    assert.equal(total_material(1, 1, 10), 14, "total material required succeeds");
+});
+
+QUnit.test("Day 2 part 2 puzzle input test", function (assert) {
+    assert.equal(part_two(), 3812909, "total material required succeeds");
 });
