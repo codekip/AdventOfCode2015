@@ -17,7 +17,7 @@ const compass = {
     }
 }
 
-function count_of_houses(directions) {
+function houses_visited(directions) {
     let x = 0
     let y = 0
     let s = new Set()
@@ -32,45 +32,21 @@ function count_of_houses(directions) {
             s.add(x + ',' + y)
         })
 
-    return s.size
+    return s
 }
 // part 2 //
+function houses_visited_with_robot(directions) {
 
-function split_house_count(directions) {
-    let santa = new Set()
-    let robot = new Set()
+    const filters = [0, 1].map(modulus => (item, ix) => (ix % 2 === modulus))
+    const all_visited = new Set()
 
-    santa.add('0,0')
-    robot.add('0,0')
+    filters.forEach(function (filter) {
+        const instructions = directions.split('')
+            .filter(filter)
+            .join('')
+        houses_visited(instructions)
+            .forEach(house => all_visited.add(house))
 
-    let x = 0
-    let y = 0
-
-    let all = directions.split("")
-
-    for (let i = 0; i < all.length; i++) {
-        // let x = 0
-        // let y = 0
-
-        if (i % 2 === 0) {
-            let direction = compass[all[i]]
-            x += direction.x
-            y += direction.y
-
-            santa.add(x + ',' + y)
-        } else {
-
-            let direction = compass[all[i]]
-            x += direction.x
-            y += direction.y
-            robot.add(x + ',' + y)
-        }
-    }
-
-    console.log(santa)
-    console.log(robot)
-    let combined = new Set([...santa, ...robot])
-
-    return combined.size
-
+    })
+    return all_visited
 }

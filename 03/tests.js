@@ -1,30 +1,28 @@
- QUnit.test("Total distance from start - East Passed", function (assert) {
-     assert.equal(count_of_houses(">"), 2, "Total distance from start - East Passed!");
- });
+function test_houses_visited(instructions, expected_count) {
+    const desc = 'houses_visited("' + instructions + '").size equals ' + expected_count
+    QUnit.test(desc, function (assert) {
+        assert.equal(houses_visited(instructions).size, expected_count)
+    })
+}
+test_houses_visited(">", 2)
+test_houses_visited("^>v<", 4)
+test_houses_visited("^v^v^v^v^v", 2)
 
+QUnit.test("Part 1 Puzzle input", function (assert) {
+    assert.equal(houses_visited(puzzle_input).size, 2572, "Part 1 Puzzle input Passed!");
+});
 
- QUnit.test("Total distance from start - N E W S Passed", function (assert) {
-     assert.equal(count_of_houses("^>v<"), 4, "Total distance from start - N E W S Passed!");
- });
+//  //part 2
+function test_houses_visited_with_robot(instructions, expected_count) {
+    const desc = 'houses_visited("' + instructions + '").size equals ' + expected_count
+    QUnit.test(desc, function (assert) {
+        assert.equal(houses_visited_with_robot(instructions).size, expected_count)
+    })
+}
+test_houses_visited_with_robot(">", 2)
+test_houses_visited_with_robot("^>v<", 3)
+test_houses_visited_with_robot("^v^v^v^v^v", 11)
 
- QUnit.test("Total distance from start - N S Passed", function (assert) {
-     assert.equal(count_of_houses("^v^v^v^v^v"), 2, "Total distance from start - N S Passed!");
- });
-
- QUnit.test("Part 1 Puzzle input Passed", function (assert) {
-     assert.equal(count_of_houses(puzzle_input), 2572, "Part 1 Puzzle input Passed!");
- });
-
- //part 2
-
- QUnit.test("Part 2a - separate the steps", function (assert) {
-     assert.equal(split_house_count("^v"), 3, "Part 2a - separation of steps passed!");
- })
-
- QUnit.test("Part 2b - separate the steps", function (assert) {
-     assert.equal(split_house_count("^>v<"), 3, "Part 2b - 3 houses passed!");
- })
-
- QUnit.test("Part 2c - eleven - separate the steps", function (assert) {
-     assert.equal(split_house_count("^v^v^v^v^v"), 11, "Part 2c - eleven houses passed!");
- })
+QUnit.test("Part 2 Puzzle input", function (assert) {
+    assert.equal(houses_visited_with_robot(puzzle_input).size, 2631, "Part 2 Puzzle input Passed!");
+});
